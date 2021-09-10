@@ -25,8 +25,8 @@ const App: React.FC = () => {
         latitude: 37.7577,
         longitude: -122.4376,
         zoom: 10,
-        width: window.innerWidth,
-        height: window.innerHeight,
+        width: "100%",
+        height: "100%",
         pitch: 40,
     });
     const [currentCoordinates, setCurrentCoordinates] = useState<ICoordinates>({

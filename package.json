@@ -1,6 +1,5 @@
 {
     "name": "map-forecast",
-    "homepage": "https://buiduclong0511.github.io/map-forecast/",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
@@ -16,7 +15,7 @@
         "query-string": "^7.0.1",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
-        "react-map-gl": "5.2.11",
+        "react-map-gl": "^6.1.17",
         "react-scripts": "4.0.3",
         "react-spinners": "^0.11.0",
         "react-toggle-dark-mode": "^1.0.4",
