@@ -10,9 +10,16 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "axios": "^0.21.4",
+    "query-string": "^7.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-map-gl": "^6.1.17",
     "react-scripts": "4.0.3",
+    "react-spinners": "^0.11.0",
+    "react-toggle-dark-mode": "^1.0.4",
+    "slug": "^5.1.0",
+    "styled-components": "^5.3.1",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
   },
@@ -39,5 +46,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/slug": "^5.0.2",
+    "@types/styled-components": "^5.1.14"
   }
 }
