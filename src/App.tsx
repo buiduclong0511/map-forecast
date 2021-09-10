@@ -4,21 +4,16 @@ import styled from "styled-components";
 import slug from "slug";
 import RingLoader from "react-spinners/RingLoader";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
+import mapboxgl from "mapbox-gl";
 
-import {
-    MarkerIcon,
-    Input,
-    WeatherPopup,
-    WeatherPopupMobile,
-} from "src/Components";
+import { MarkerIcon, Input, WeatherPopup, WeatherPopupMobile } from "src/Components";
 import { weatherApi } from "src/Api";
 import { sleep, useDebounce, useWindowDimensions } from "src/Hooks";
-import {
-    IViewport,
-    ICoordinates,
-    ILocation,
-    IResponseWeather,
-} from "src/Interface";
+import { IViewport, ICoordinates, ILocation, IResponseWeather } from "src/Interface";
+
+// @ts-ignore
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass = require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
 
 const App: React.FC = () => {
     const [viewport, setViewport] = useState<IViewport>({
@@ -34,16 +29,13 @@ const App: React.FC = () => {
         longitude: 0,
     });
     const [keySearch, setKeySearch] = useState<string>("");
-    const [isLoadingLocations, setIsLoadingLocations] =
-        useState<boolean>(false);
+    const [isLoadingLocations, setIsLoadingLocations] = useState<boolean>(false);
     const [isLoadingWeather, setIsLoadingWeather] = useState<boolean>(false);
     const [listLocations, setListLocations] = useState<ILocation[]>([]);
-    const [isShowSearchResult, setIsShowSearchResult] =
-        useState<boolean>(false);
+    const [isShowSearchResult, setIsShowSearchResult] = useState<boolean>(false);
     const [isFocusInput, setIsFocusInput] = useState<boolean>(false);
     const [isShowPopup, setIsShowPopUp] = useState<boolean>(false);
-    const [currentWeather, setCurrentWeather] =
-        useState<IResponseWeather | null>(null);
+    const [currentWeather, setCurrentWeather] = useState<IResponseWeather | null>(null);
     const [darkMode, setDarkMode] = useState<boolean>(false);
     const { width } = useWindowDimensions();
 
@@ -63,9 +55,7 @@ const App: React.FC = () => {
                 });
                 setIsLoadingWeather(true);
                 weatherApi
-                    .getCurrentWeather(
-                        `${position.coords.latitude},${position.coords.longitude}`
-                    )
+                    .getCurrentWeather(`${position.coords.latitude},${position.coords.longitude}`)
                     .then((res: IResponseWeather) =>
                         setCurrentWeather({
                             ...res,
@@ -158,11 +148,7 @@ const App: React.FC = () => {
     return (
         <Container className="App">
             <div className="toggleDarkMode">
-                <DarkModeSwitch
-                    checked={darkMode}
-                    onChange={(e) => setDarkMode(e)}
-                    size={120}
-                />
+                <DarkModeSwitch checked={darkMode} onChange={(e) => setDarkMode(e)} size={120} />
             </div>
             <div className="searchBox">
                 <Input
@@ -177,8 +163,7 @@ const App: React.FC = () => {
                         {listLocations.length ? (
                             <div className="listLocations">
                                 {listLocations.map((item: ILocation) => {
-                                    const handleClick = () =>
-                                        handleClickLocation(item);
+                                    const handleClick = () => handleClickLocation(item);
                                     return (
                                         <div
                                             className="resultItem"
@@ -206,13 +191,9 @@ const App: React.FC = () => {
                 mapboxApiAccessToken={process.env.REACT_APP_MAP_ACCESS_TOKEN}
                 width="100%"
                 height="100%"
-                onViewportChange={(viewport: IViewport) =>
-                    setViewport(viewport)
-                }
+                onViewportChange={(viewport: IViewport) => setViewport(viewport)}
                 mapStyle={
-                    darkMode
-                        ? "mapbox://styles/mapbox/dark-v9"
-                        : "mapbox://styles/mapbox/light-v9"
+                    darkMode ? "mapbox://styles/mapbox/dark-v9" : "mapbox://styles/mapbox/light-v9"
                 }
             >
                 <Marker
