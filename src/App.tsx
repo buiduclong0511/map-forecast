@@ -279,7 +279,7 @@ const Container = styled.div`
     .searchBox {
         position: fixed;
         z-index: 1;
-        top: 5px;
+        top: 10px;
         right: 10px;
 
         .loading {
