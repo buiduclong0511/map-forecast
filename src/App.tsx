@@ -182,7 +182,7 @@ const App: React.FC = () => {
                 )}
                 {isLoadingLocations && (
                     <div className="loading">
-                        <RingLoader size={25} color="#fff" />
+                        <RingLoader size={25} color={darkMode ? "#fff" : "#000"} />
                     </div>
                 )}
             </div>
