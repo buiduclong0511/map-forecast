@@ -155,7 +155,7 @@ export const WeatherPopupMobile: React.FC<{
 const Wrapper = styled.div`
     .heading {
         text-align: center;
-        padding-bottom: 0 10px;
+        padding: 0 10px;
         font-size: 20px;
         font-weight: 700;
     }
