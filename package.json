@@ -1,5 +1,6 @@
 {
     "name": "map-forecast",
+    "homepage": "https://buiduclong0511.github.io/map-forecast/",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
