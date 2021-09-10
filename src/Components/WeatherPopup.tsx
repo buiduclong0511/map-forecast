@@ -220,8 +220,15 @@ const WrapperMobile = styled(Wrapper)<{ isShowPopup: boolean }>`
         position: absolute;
         top: 0;
         right: 0;
-        padding: 0 5px;
+        width: 30px;
+        height: 30px;
         font-size: 20px;
+        appearance: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #3a3939;
+        outline: none;
     }
 
     .loading {
